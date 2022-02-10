@@ -159,6 +159,22 @@ menu "TinyUSB Stack"
                 help
                     CDC FIFO size of TX channel.
         endmenu # "Communication Device Class"
+
+        menu "Human Interface Device (HID)"
+            config TINYUSB_HID_ENABLED
+                depends on TINYUSB_CDC_COUNT < 2
+                bool "Enable TinyUSB HID feature"
+                default n
+                help
+                    Enable TinyUSB HID feature.
+
+            config TINYUSB_HID_BUFSIZE
+                depends on TINYUSB_HID_ENABLED
+                int "HID Buffer size"
+                default 16
+                help
+                    HID Buffer size, in bytes.
+        endmenu # "Human Interface Device"
     endif # TINYUSB
 
 endmenu # "TinyUSB Stack"
